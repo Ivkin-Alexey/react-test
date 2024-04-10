@@ -1,9 +1,9 @@
 import { IUser } from "../../types/types";
-import { LOADING_TIME, FETCHED_USER_LIST_LENGTH } from "../constants";
+import { LOADING_TIME } from "../constants";
 
-export function createUserList(numberFrom: number): IUser[] {
+export function createUserList(start: number, end: number): IUser[] {
 const users = [];
-for (let i = numberFrom; i < numberFrom + FETCHED_USER_LIST_LENGTH; i++) {
+for (let i = start; i < end; i++) {
   const user = {
     name: `User ${i + 1}`,
     department: `Department ${Math.floor(Math.random() * 5) + 1}`,
@@ -15,10 +15,10 @@ for (let i = numberFrom; i < numberFrom + FETCHED_USER_LIST_LENGTH; i++) {
 return users;
 }
 
-export async function fetchData(): Promise<IUser[]> {
+export async function fetchData(start: number, end: number): Promise<IUser[]> {
     return new Promise((resolve, reject) => {
         try {
-            setTimeout(() => resolve(createUserList(FETCHED_USER_LIST_LENGTH)), LOADING_TIME);
+            setTimeout(() => resolve(createUserList(start, end)), LOADING_TIME);
         } catch (e) {
             reject(e);
         }
