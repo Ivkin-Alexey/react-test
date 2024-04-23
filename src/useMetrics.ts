@@ -1,15 +1,15 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const useMetrics = (ref: React.RefObject<HTMLElement>) => {
 
     interface IPosition {
-        scrollHeight: number | null,
-        clientHeight: number | null,
-        scrollTop: number | null, 
-        scrollBottom: number | null, 
+        scrollHeight: number,
+        clientHeight: number,
+        scrollTop: number,
+        scrollBottom: number,
     }
 
-  const [metrics, setMetrics] = useState<IPosition>({scrollHeight: null, clientHeight: null, scrollTop: null, scrollBottom: null});
+  const [metrics, setMetrics] = useState<IPosition>({scrollHeight: 0, clientHeight: 0, scrollTop: 0, scrollBottom: 0});
 
   useEffect(() => {
 
@@ -17,7 +17,7 @@ const useMetrics = (ref: React.RefObject<HTMLElement>) => {
       if (ref.current) {
         const { scrollTop, scrollHeight, clientHeight } = ref.current;
         const scrollBottom = scrollHeight - scrollTop - clientHeight;
-        setMetrics({scrollHeight, clientHeight, scrollTop, scrollBottom});
+        setMetrics(() => ({scrollHeight, clientHeight, scrollTop, scrollBottom}));
       }
     };
 

@@ -1,0 +1,9 @@
+.wrapper {
+    display: flex;
+
+}
+
+.labelWrapper, .inputWrapper {
+    display: flex;
+    flex-direction: column;
+}

@@ -1,0 +1,8 @@
+.scrollItem:hover {
+    background-color: #9fd0e1;
+    cursor: pointer;
+}
+.scrollItem:active {
+    background-color: #02b6ee;
+    cursor: pointer;
+}
